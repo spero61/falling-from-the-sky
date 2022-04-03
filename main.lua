@@ -6,39 +6,47 @@ function love.load()
     player.width = 80
 
     listOfStuffs = {}
+    -- automatically start the game by creating the first stuff
+    createStuff()
+    
+    -- global variable to set time interval
+    Timer = 3
 
     love.graphics.setBackgroundColor(119/255, 136/255, 153/255)
     love.window.setTitle("Falling from the sky")
 end
 
-function createStuff(x, y, speed)
+
+function createStuff()
     local stuff = {}
-    stuff.x = x
-    stuff.y = y
+    stuff.x = math.random(0, 700)
+    stuff.y = math.random(-300, -100)
     stuff.height = 70
     stuff.width = 100
-    stuff.speed = speed
+    stuff.speed = math.random(50, 120)
 
     table.insert(listOfStuffs, stuff)
 end
 
-function love.keypressed(key)
-    if key == "space" then
-        local x = math.random(0, 700)
-        local y = math.random(-300, -100)
-        local speed = math.random(50, 120)
-        createStuff(x, y, speed)
-    end
-end
 
 function love.update(dt)
     -- a stuff is falling from the top
     for i, v in ipairs(listOfStuffs) do
         v.y = v.y + v.speed * dt
+
+        -- if it goes below the window, delete it
+        -- (make sure listOfStuffs is not empty to prevent error)
+        if #listOfStuffs > 2 and v.y > 600 then
+            table.remove(listOfStuffs, i - 1)
+        end
     end
 
-    -- if it goes below the window, delete it
-    
+    -- set timer for time interval event
+    if Timer <= 0 then
+        Timer = math.random(0.5, 1.5)
+        createStuff()
+    end
+    Timer = Timer - dt
 
     -- player movement
     if love.keyboard.isDown('a') or love.keyboard.isDown('left') then
@@ -55,6 +63,7 @@ function love.update(dt)
 
 end
 
+
 function love.draw()
     local mode
     for i, v in ipairs(listOfStuffs) do
@@ -64,10 +73,10 @@ function love.draw()
             mode = "line"
         end
         love.graphics.rectangle(mode, v.x, v.y, v.width, v.height)    
-        love.graphics.rectangle(mode, player.x, player.y, player.width, player.height)
     end
+    love.graphics.rectangle(mode, player.x, player.y, player.width, player.height)
+    
     love.graphics.print("If player collides with the stuff, both become colored", 470, 15)
-    love.graphics.print("Press space to start game or to add another stuff", 470, 30)
 end
 
 
