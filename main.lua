@@ -5,24 +5,40 @@ function love.load()
     player.height = 90
     player.width = 80
 
-    stuff = {}
-    stuff.x = math.random(200, 600)
-    stuff.y = -100
-    stuff.height = 70
-    stuff.width = 100
+    listOfStuffs = {}
 
     love.graphics.setBackgroundColor(119/255, 136/255, 153/255)
     love.window.setTitle("Falling from the sky")
 end
 
-function love.update(dt)
-    -- stuff is falling from the top
-    stuff.y = stuff.y + 200 * dt
-    -- if it goes below the window, start from the top again
-    if stuff.y > 600 then
-        stuff.y = -100
-        stuff.x = math.random(200, 600)
+function createStuff(x, y, speed)
+    local stuff = {}
+    stuff.x = x
+    stuff.y = y
+    stuff.height = 70
+    stuff.width = 100
+    stuff.speed = speed
+
+    table.insert(listOfStuffs, stuff)
+end
+
+function love.keypressed(key)
+    if key == "space" then
+        local x = math.random(0, 700)
+        local y = math.random(-300, -100)
+        local speed = math.random(50, 120)
+        createStuff(x, y, speed)
     end
+end
+
+function love.update(dt)
+    -- a stuff is falling from the top
+    for i, v in ipairs(listOfStuffs) do
+        v.y = v.y + v.speed * dt
+    end
+
+    -- if it goes below the window, delete it
+    
 
     -- player movement
     if love.keyboard.isDown('a') or love.keyboard.isDown('left') then
@@ -41,15 +57,17 @@ end
 
 function love.draw()
     local mode
-    if checkCollision(player, stuff) then
-        mode = "fill"
-    else
-        mode = "line"
+    for i, v in ipairs(listOfStuffs) do
+        if checkCollision(player, v) then
+            mode = "fill"
+        else
+            mode = "line"
+        end
+        love.graphics.rectangle(mode, v.x, v.y, v.width, v.height)    
+        love.graphics.rectangle(mode, player.x, player.y, player.width, player.height)
     end
-
-    love.graphics.rectangle(mode, player.x, player.y, player.width, player.height)
-    love.graphics.rectangle(mode, stuff.x, stuff.y, stuff.width, stuff.height)
     love.graphics.print("If player collides with the stuff, both become colored", 470, 15)
+    love.graphics.print("Press space to start game or to add another stuff", 470, 30)
 end
 
 
