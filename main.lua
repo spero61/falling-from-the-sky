@@ -8,9 +8,12 @@ function love.load()
     listOfStuffs = {}
     listOfBigStuffs = {}
 
-    -- global variable to set time interval
+    -- timer
     TimerSmall = 3
     TimerBig = 7
+
+    -- score
+    PlayerScore = 0
 
     love.graphics.setBackgroundColor(119/255, 136/255, 153/255)
     love.window.setTitle("Falling from the sky")
@@ -37,6 +40,8 @@ function love.update(dt)
         stuff:checkCollision(player)
         if stuff.dead then
             table.remove(listOfStuffs, i)
+            -- score 30
+            PlayerScore = PlayerScore + 30
         end
     end
 
@@ -44,7 +49,9 @@ function love.update(dt)
         bigStuff:update(dt)
         bigStuff:checkCollision(player)
         if bigStuff.dead then
+            -- score 70
             table.remove(listOfBigStuffs, i)
+            PlayerScore = PlayerScore + 70
         end
     end
 
@@ -74,5 +81,6 @@ function love.draw()
         bigStuff:draw()
     end
 
-    love.graphics.print("If player collides with the stuff, restart the game", 470, 15)
+    love.graphics.print("Score: ".. tostring(PlayerScore), 15, 15)
+    love.graphics.print("If player collides with the stuff, restart the game", 490, 15)
 end
