@@ -5,7 +5,7 @@ function Player:new()
     self.x = 380
     self.y = 520
     self.speed = 0 -- current speed
-    self.acceleration = 24 -- speed is goes over or below 0 by acceleration
+    self.acceleration = 22 -- speed is goes over or below 0 by acceleration
     self.friction = 12 -- the more friction makes the game easier
 
     -- 1 : 10 ratio
