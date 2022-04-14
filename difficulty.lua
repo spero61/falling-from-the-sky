@@ -30,9 +30,17 @@ BigSpeedCoef = 1.75
 
 
 -- 4)
+-- seaStuff.lua
+-- seaStuff's VibrateTimer is the time until it starts to fall
+VibrateTimer = 3
+-- seaStuff's speed is quite fast because a player can predict its movement beforehand
+SeaStuffSpeed = 500
+
+-- 4)
 -- main.lua
 -- score
 -- NormalScore = 70
 -- BigScore = 150
 NormalScore = 270
 BigScore = 550
+SeaScore = 500

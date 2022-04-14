@@ -33,7 +33,7 @@ function Stuff:new()
     elseif index == 4 then
         self.image = love.graphics.newImage("image/gaming_pc_14369.png")
     elseif index == 5 then
-        self.image = love.graphics.newImage("image/doki_14977.png")
+        self.image = love.graphics.newImage("image/outdoor_ruck_sack_14081.png")
     elseif index == 6 then
         self.image = love.graphics.newImage("image/car_navigation_14958.png")
     elseif index == 7 then
@@ -60,7 +60,7 @@ function Stuff:update(dt)
     local window_height = love.graphics.getHeight()
 
     if self.y - self.height > window_height and self.dead == false then
-            scoreSmall:play()
+            ScoreSmall:play()
             self.dead = true
     end
 end
@@ -93,7 +93,6 @@ function Stuff:checkCollision(obj)
         self.dead = true
 
         -- Restart the game
-        soundtrackPlay:stop()
-        love.load()
+        PlayerScore = 0
     end
 end
