@@ -42,7 +42,7 @@ function love.update(dt)
         if stuff.dead then
             table.remove(listOfStuffs, i)
             -- score 30
-            PlayerScore = PlayerScore + 30
+            PlayerScore = PlayerScore + NormalScore
         end
     end
 
@@ -52,16 +52,26 @@ function love.update(dt)
         if bigStuff.dead then
             -- score 70
             table.remove(listOfBigStuffs, i)
-            PlayerScore = PlayerScore + 70
+            PlayerScore = PlayerScore + BigScore
         end
     end
 
     -- the smaller coefficient the shorter interval between stuffs
     local intervalCoef = 1
     if PlayerScore > LevelOne then
-        intervalCoef = 0.5 
+        intervalCoef = 0.8
     elseif PlayerScore > LevelTwo then
-        intervalCoef = 0.25
+        intervalCoef = 0.6
+    elseif PlayerScore > LevelThree then
+        intervalCoef = 0.4
+    elseif PlayerScore > LevelFour then
+        intervalCoef = 0.3
+    elseif PlayerScore > LevelFive then
+        intervalCoef = 0.2
+    elseif PlayerScore > LevelSix then
+        intervalCoef = 0.15
+    elseif PlayerScore > LevelSeven then
+        intervalCoef = 0.1
     end
 
     -- set timer for time interval event

@@ -7,27 +7,46 @@ function Stuff:new()
     local speedCoef = 1
     -- as the player gets more score, stuff's speed also gets faster
     if PlayerScore > LevelOne then
-        speedCoef = 2
+        speedCoef = 1.2
     elseif PlayerScore > LevelTwo then
-        speedCoef = math.floor(PlayerScore / 2500)
+        speedCoef = 1.4
+    elseif PlayerScore > LevelThree then
+        speedCoef = 1.6
+    elseif PlayerScore > LevelFour then
+        speedCoef = 1.8
+    elseif PlayerScore > LevelFive then
+        speedCoef = 2.0
+    elseif PlayerScore > LevelSix then
+        speedCoef = 2.5
+    elseif PlayerScore > LevelSeven then
+        speedCoef = 3
     end
-    
-    local index = math.random(1, 5)
+
+
+    local index = math.random(1, 9)
     if index == 1 then
         self.image = love.graphics.newImage("image/bike_helmet_15988.png")
     elseif index == 2 then
-        self.image = love.graphics.newImage("image/mushimegane_search_illust_1949.png")
+        self.image = love.graphics.newImage("image/the_statue_of_liberty_6645.png")
     elseif index == 3 then
         self.image = love.graphics.newImage("image/dram_11171.png")
     elseif index == 4 then
-        self.image = love.graphics.newImage("image/cardboard_illust_3504.png")
+        self.image = love.graphics.newImage("image/gaming_pc_14369.png")
     elseif index == 5 then
         self.image = love.graphics.newImage("image/doki_14977.png")
+    elseif index == 6 then
+        self.image = love.graphics.newImage("image/car_navigation_14958.png")
+    elseif index == 7 then
+        self.image = love.graphics.newImage("image/submarine_cute_13244.png")
+    elseif index == 8 then
+        self.image = love.graphics.newImage("image/yacht_13224.png")
+    elseif index == 9 then
+        self.image = love.graphics.newImage("image/present_shopping_cart_12494.png")
     end
 
     self.x = math.random(0, 700)
     self.y = math.random(-300, -100)
-    self.speed = math.random(100, 200) * speedCoef
+    self.speed = math.random(SpeedMin, SpeedMax) * speedCoef
     self.height = self.image:getHeight() / 10
     self.width = self.image:getWidth() / 10
     -- self.deg = math.random(120, 240)
