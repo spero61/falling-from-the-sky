@@ -28,6 +28,7 @@ function Stuff:new()
     self.speed = math.random(100, 200) * coef
     self.height = self.image:getHeight() / 10
     self.width = self.image:getWidth() / 10
+    self.deg = math.random(120, 240)
     self.dead = false
 end
 
@@ -37,7 +38,7 @@ function Stuff:update(dt)
 
     local window_height = love.graphics.getHeight()
 
-    if self.y > window_height and self.dead == false then
+    if self.y - self.height > window_height and self.dead == false then
             scoreSmall:play()
             self.dead = true
     end
@@ -45,7 +46,8 @@ end
 
 
 function Stuff:draw()
-    love.graphics.draw(self.image, self.x, self.y, 0, 0.1, 0.1)
+    -- https://love2d.org/wiki/love.graphics.draw
+    love.graphics.draw(self.image, self.x, self.y, math.rad(self.deg), 0.1, 0.1)
 end
 
 

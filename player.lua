@@ -49,5 +49,6 @@ end
 
 
 function Player:draw()
+    -- https://love2d.org/wiki/love.graphics.draw
     love.graphics.draw(self.image, self.x, self.y, 0, 0.1, 0.1)
 end

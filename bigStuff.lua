@@ -27,7 +27,7 @@ function BigStuff:update(dt)
 
     local window_height = love.graphics.getHeight()
 
-    if self.y > window_height and self.dead == false then
+    if self.y - self.height > window_height and self.dead == false then
             scoreBig:play()
             self.dead = true
     end
@@ -35,5 +35,5 @@ end
 
 
 function BigStuff:draw()
-    love.graphics.draw(self.image, self.x, self.y, 0, 0.2, 0.2)
+    love.graphics.draw(self.image, self.x, self.y, math.rad(self.deg), 0.2, 0.2)
 end
