@@ -1,34 +1,36 @@
 Stuff = Object:extend()
 
+require "difficulty"
+
 function Stuff:new()
     -- speed coefficient
-    local coef = 1
+    local speedCoef = 1
     -- as the player gets more score, stuff's speed also gets faster
-    if PlayerScore > 200 then
-        coef = 2
-    elseif PlayerScore > 500 then
-        coef = math.floor(PlayerScore / 2500)
+    if PlayerScore > LevelOne then
+        speedCoef = 2
+    elseif PlayerScore > LevelTwo then
+        speedCoef = math.floor(PlayerScore / 2500)
     end
     
     local index = math.random(1, 5)
     if index == 1 then
-        self.image = love.graphics.newImage("image/cardboard_illust_3504.png")
+        self.image = love.graphics.newImage("image/bike_helmet_15988.png")
     elseif index == 2 then
-        self.image = love.graphics.newImage("image/doki_14977.png")
+        self.image = love.graphics.newImage("image/mushimegane_search_illust_1949.png")
     elseif index == 3 then
         self.image = love.graphics.newImage("image/dram_11171.png")
     elseif index == 4 then
-        self.image = love.graphics.newImage("image/mushimegane_search_illust_1949.png")
+        self.image = love.graphics.newImage("image/cardboard_illust_3504.png")
     elseif index == 5 then
-        self.image = love.graphics.newImage("image/bike_helmet_15988.png")
+        self.image = love.graphics.newImage("image/doki_14977.png")
     end
 
     self.x = math.random(0, 700)
     self.y = math.random(-300, -100)
-    self.speed = math.random(100, 200) * coef
+    self.speed = math.random(100, 200) * speedCoef
     self.height = self.image:getHeight() / 10
     self.width = self.image:getWidth() / 10
-    self.deg = math.random(120, 240)
+    -- self.deg = math.random(120, 240)
     self.dead = false
 end
 
@@ -47,7 +49,8 @@ end
 
 function Stuff:draw()
     -- https://love2d.org/wiki/love.graphics.draw
-    love.graphics.draw(self.image, self.x, self.y, math.rad(self.deg), 0.1, 0.1)
+    -- love.graphics.draw(self.image, self.x, self.y, math.rad(self.deg), 0.1, 0.1, self.width / 2, self.height / 2)
+    love.graphics.draw(self.image, self.x, self.y, 0, 0.1, 0.1)
 end
 
 

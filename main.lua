@@ -3,6 +3,7 @@ function love.load()
     require "player"
     require "stuff"
     require "bigStuff"
+    require "difficulty"
 
     player = Player()
     listOfStuffs = {}
@@ -55,15 +56,23 @@ function love.update(dt)
         end
     end
 
+    -- the smaller coefficient the shorter interval between stuffs
+    local intervalCoef = 1
+    if PlayerScore > LevelOne then
+        intervalCoef = 0.5 
+    elseif PlayerScore > LevelTwo then
+        intervalCoef = 0.25
+    end
+
     -- set timer for time interval event
     if TimerSmall <= 0 then
-        TimerSmall = math.random(2, 4)
+        TimerSmall = math.random(1, 3) * intervalCoef
         table.insert(listOfStuffs, Stuff())
     end
     TimerSmall = TimerSmall - dt
 
     if TimerBig <= 0 then
-        TimerBig = math.random(5, 10)
+        TimerBig = math.random(10, 15) * intervalCoef
         table.insert(listOfBigStuffs, BigStuff())
     end
     TimerBig = TimerBig - dt

@@ -35,5 +35,5 @@ end
 
 
 function BigStuff:draw()
-    love.graphics.draw(self.image, self.x, self.y, math.rad(self.deg), 0.2, 0.2)
+    love.graphics.draw(self.image, self.x, self.y, 0, 0.2, 0.2)
 end
