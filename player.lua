@@ -1,7 +1,7 @@
 Player = Object:extend()
 
 function Player:new()
-    self.image = love.graphics.newImage("image/cute_kawauso_13727.png")
+    self.image = love.graphics.newImage("image/player/player.png")
     self.x = 380
     self.y = 520
     self.speed = 0 -- current speed
@@ -34,6 +34,11 @@ function Player:update(dt)
         if self.speed < 0 then
             self.speed = self.speed + self.friction
         end
+    end
+
+    -- to prevent unwanted move due to friction addition
+    if math.abs(self.friction) > math.abs(self.speed) then
+        self.speed = 0
     end
 
     local window_width = love.graphics.getWidth()

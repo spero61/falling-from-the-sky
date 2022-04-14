@@ -3,6 +3,15 @@ Stuff = Object:extend()
 require "difficulty"
 
 function Stuff:new()
+    -- since lua does not support "switch"
+    local index = math.random(1, 40)
+    local imagePrefix = "stuff"
+    if index < 10 then
+        imagePrefix = imagePrefix .. "0"
+    end
+    local filename = imagePrefix .. tostring(index) .. ".png"
+    self.image = love.graphics.newImage("image/stuff/" .. filename)
+
     -- speed coefficient
     local speedCoef = 1
     -- as the player gets more score, stuff's speed also gets faster
@@ -20,28 +29,6 @@ function Stuff:new()
         speedCoef = 2.5
     elseif PlayerScore > LevelSeven then
         speedCoef = 3
-    end
-
-
-    local index = math.random(1, 9)
-    if index == 1 then
-        self.image = love.graphics.newImage("image/bike_helmet_15988.png")
-    elseif index == 2 then
-        self.image = love.graphics.newImage("image/the_statue_of_liberty_6645.png")
-    elseif index == 3 then
-        self.image = love.graphics.newImage("image/dram_11171.png")
-    elseif index == 4 then
-        self.image = love.graphics.newImage("image/gaming_pc_14369.png")
-    elseif index == 5 then
-        self.image = love.graphics.newImage("image/outdoor_ruck_sack_14081.png")
-    elseif index == 6 then
-        self.image = love.graphics.newImage("image/car_navigation_14958.png")
-    elseif index == 7 then
-        self.image = love.graphics.newImage("image/submarine_cute_13244.png")
-    elseif index == 8 then
-        self.image = love.graphics.newImage("image/yacht_13224.png")
-    elseif index == 9 then
-        self.image = love.graphics.newImage("image/present_shopping_cart_12494.png")
     end
 
     self.x = math.random(0, 700)

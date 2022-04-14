@@ -3,14 +3,6 @@ SeaStuff = Stuff:extend()
 require "difficulty"
 
 function SeaStuff:new()
-    self.x = math.random(0, 680)
-    
-    -- 1 : 8 ratio
-    self.height = self.image:getHeight() / 8
-    self.width = self.image:getWidth() / 8
-    self.speed = SeaStuffSpeed
-    self.dead = false
-
     -- since lua does not support "switch"
     local index = math.random(1, 20)
     local imagePrefix = "sea"
@@ -18,7 +10,15 @@ function SeaStuff:new()
         imagePrefix = imagePrefix .. "0"
     end
     local filename = imagePrefix .. tostring(index) .. ".png"
-    self.image = love.graphics.newImage("image/" .. filename)
+    self.image = love.graphics.newImage("image/seaStuff/" .. filename)
+
+    self.x = math.random(0, 700)
+    
+    -- 1 : 8 ratio
+    self.height = self.image:getHeight() / 8
+    self.width = self.image:getWidth() / 8
+    self.speed = SeaStuffSpeed
+    self.dead = false
 
     -- for seaStuff specific behavior
     self.vibrateTimer = VibrateTimer

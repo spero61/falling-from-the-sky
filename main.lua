@@ -8,11 +8,13 @@ function love.load()
 
     Player = Player()
     ListOfStuffs = {}
+    ListOfOtherStuffs = {}
     ListOfBigStuffs = {}
     ListOfSeaStuffs = {}
 
     -- timer
     TimerNormal = 3
+    TimerNormalOther = 5
     TimerBig = 7
     TimerSea = 15
 
@@ -23,7 +25,7 @@ function love.load()
     love.window.setTitle("Falling from the sky")
 
     -- soundtrack - PLAY
-    SoundtrackPlay = love.audio.newSource("sound/soundtrack_play.ogg", "stream")
+    SoundtrackPlay = love.audio.newSource("sound/soundtrackPlay.ogg", "stream")
     SoundtrackPlay:setLooping(true)
     SoundtrackPlay:play()
     
@@ -31,9 +33,9 @@ function love.load()
     SoundtrackPlay:setVolume(0.5)
 
     -- sfx
-    ScoreSmall = love.audio.newSource("sound/score_normal.wav", "static")
-    ScoreBig = love.audio.newSource("sound/score_big.wav", "static")
-    ScoreSea = love.audio.newSource("sound/score_sea.wav", "static")
+    ScoreSmall = love.audio.newSource("sound/scoreNormal.wav", "static")
+    ScoreBig = love.audio.newSource("sound/scoreBig.wav", "static")
+    ScoreSea = love.audio.newSource("sound/scoreSea.wav", "static")
 end
 
 
@@ -45,7 +47,15 @@ function love.update(dt)
         stuff:checkCollision(Player)
         if stuff.dead then
             table.remove(ListOfStuffs, i)
-            -- score 30
+            PlayerScore = PlayerScore + NormalScore
+        end
+    end
+
+    for i, stuff in ipairs(ListOfOtherStuffs) do
+        stuff:update(dt)
+        stuff:checkCollision(Player)
+        if stuff.dead then
+            table.remove(ListOfOtherStuffs, i)
             PlayerScore = PlayerScore + NormalScore
         end
     end
@@ -54,7 +64,6 @@ function love.update(dt)
         bigStuff:update(dt)
         bigStuff:checkCollision(Player)
         if bigStuff.dead then
-            -- score 70
             table.remove(ListOfBigStuffs, i)
             PlayerScore = PlayerScore + BigScore
         end
@@ -95,6 +104,12 @@ function love.update(dt)
     end
     TimerNormal = TimerNormal - dt
 
+    if TimerNormalOther <= 0 then
+        TimerNormalOther = math.random(2, 5) * intervalCoef
+        table.insert(ListOfOtherStuffs, Stuff())
+    end
+    TimerNormalOther = TimerNormalOther - dt
+
     if TimerBig <= 0 then
         TimerBig = math.random(10, 15) * intervalCoef
         table.insert(ListOfBigStuffs, BigStuff())
@@ -114,6 +129,10 @@ function love.draw()
     
     for i, stuff in ipairs(ListOfStuffs) do
         stuff:draw()
+    end
+
+    for i, otherStuff in ipairs(ListOfOtherStuffs) do
+        otherStuff:draw()
     end
 
     for i, bigStuff in ipairs(ListOfBigStuffs) do
