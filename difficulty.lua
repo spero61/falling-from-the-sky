@@ -36,7 +36,14 @@ VibrateTimer = 3
 -- seaStuff's speed is quite fast because a player can predict its movement beforehand
 SeaStuffSpeed = 500
 
--- 4)
+
+-- 5)
+-- diagonalStuff.lua
+-- diagonalStuff's speed is important as it can determine game's difficulty significantly
+DiagonalStuffSpeed = 450
+
+
+-- 6)
 -- main.lua
 -- score
 -- NormalScore = 70
@@ -44,3 +51,4 @@ SeaStuffSpeed = 500
 NormalScore = 270
 BigScore = 550
 SeaScore = 500
+DiagonalScore = 600

@@ -4,6 +4,7 @@ function love.load()
     require "stuff"
     require "bigStuff"
     require "seaStuff"
+    require "diagonalStuff"
     require "difficulty"
 
     Player = Player()
@@ -11,12 +12,14 @@ function love.load()
     ListOfOtherStuffs = {}
     ListOfBigStuffs = {}
     ListOfSeaStuffs = {}
+    ListOfDiagonalStuffs = {}
 
     -- timer
     TimerNormal = 3
     TimerNormalOther = 5
     TimerBig = 7
     TimerSea = 15
+    TimerDiagonal = 4
 
     -- score
     PlayerScore = 0
@@ -36,6 +39,7 @@ function love.load()
     ScoreSmall = love.audio.newSource("sound/scoreNormal.wav", "static")
     ScoreBig = love.audio.newSource("sound/scoreBig.wav", "static")
     ScoreSea = love.audio.newSource("sound/scoreSea.wav", "static")
+    ScoreDiagonal = love.audio.newSource("sound/scoreDiagonal.wav", "static")
 end
 
 
@@ -73,11 +77,21 @@ function love.update(dt)
         seaStuff:update(dt)
         seaStuff:checkCollision(Player)
         if seaStuff.dead then
-            -- score 70
             table.remove(ListOfSeaStuffs, i)
             PlayerScore = PlayerScore + SeaScore
         end
     end
+
+    for i, diagonalStuff in ipairs(ListOfDiagonalStuffs) do
+        diagonalStuff:update(dt)
+        diagonalStuff:checkCollision(Player)
+        if diagonalStuff.dead then
+            table.remove(ListOfDiagonalStuffs, i)
+            PlayerScore = PlayerScore + DiagonalScore
+        end
+    end
+
+    
 
     -- the smaller coefficient the shorter interval between stuffs
     local intervalCoef = 1
@@ -121,6 +135,12 @@ function love.update(dt)
         table.insert(ListOfBigStuffs, SeaStuff())
     end
     TimerSea = TimerSea - dt
+
+    if TimerDiagonal <= 0 then
+        TimerDiagonal = math.random(5, 11) * intervalCoef
+        table.insert(ListOfDiagonalStuffs, DiagonalStuff(Player.x, Player.width))
+    end
+    TimerDiagonal = TimerDiagonal - dt
 end
 
 
@@ -141,6 +161,10 @@ function love.draw()
 
     for i, seaStuff in ipairs(ListOfSeaStuffs) do
         seaStuff:draw()
+    end
+
+    for i, diagonalStuff in ipairs(ListOfDiagonalStuffs) do
+        diagonalStuff:draw()
     end
 
     love.graphics.print("Score: ".. tostring(PlayerScore), 15, 15)
