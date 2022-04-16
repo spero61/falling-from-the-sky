@@ -3,7 +3,6 @@ SeaStuff = Stuff:extend()
 require "difficulty"
 
 function SeaStuff:new()
-    -- since lua does not support "switch"
     local index = math.random(1, 20)
     local imagePrefix = "sea"
     if index < 10 then
@@ -12,11 +11,10 @@ function SeaStuff:new()
     local filename = imagePrefix .. tostring(index) .. ".png"
     self.image = love.graphics.newImage("image/seaStuff/" .. filename)
 
-    self.x = math.random(0, 700)
-    
-    -- 1 : 8 ratio
-    self.height = self.image:getHeight() / 8
-    self.width = self.image:getWidth() / 8
+    self.scale = SeaStuffScale
+    self.width = self.image:getWidth() * self.scale
+    self.height = self.image:getHeight() * self.scale
+    self.x = math.random(0, GameWidth - self.width)
     self.speed = SeaStuffSpeed
     self.dead = false
 
@@ -47,5 +45,5 @@ end
 
 
 function SeaStuff:draw()
-    love.graphics.draw(self.image, self.x, self.y, 0, 0.125, 0.125)
+    love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end

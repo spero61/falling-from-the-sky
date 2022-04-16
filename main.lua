@@ -6,24 +6,19 @@ function love.load()
     require "seaStuff"
     require "diagonalStuff"
     require "difficulty"
-
+    
     Player = Player()
     ListOfStuffs = {}
     ListOfOtherStuffs = {}
     ListOfBigStuffs = {}
     ListOfSeaStuffs = {}
     ListOfDiagonalStuffs = {}
-
-    -- timer
-    TimerNormal = 3
-    TimerNormalOther = 5
-    TimerBig = 7
-    TimerSea = 15
-    TimerDiagonal = 4
-
+    
     -- score
     PlayerScore = 0
-
+    
+    -- love.graphics.setDefaultFilter('nearest', 'nearest')
+    love.window.setMode(GameWidth, GameHeight, {resizable=false, vsync=true})
     love.graphics.setBackgroundColor(119/255, 136/255, 153/255)
     love.window.setTitle("Falling from the sky")
 
@@ -113,31 +108,31 @@ function love.update(dt)
 
     -- set timer for time interval event
     if TimerNormal <= 0 then
-        TimerNormal = math.random(1, 3) * intervalCoef
+        TimerNormal = math.random(NormalIntervalMin, NormalIntervalMax) * intervalCoef
         table.insert(ListOfStuffs, Stuff())
     end
     TimerNormal = TimerNormal - dt
 
     if TimerNormalOther <= 0 then
-        TimerNormalOther = math.random(2, 5) * intervalCoef
+        TimerNormalOther = math.random(NormalOtherIntervalMin, NormalOtherIntervalMax) * intervalCoef
         table.insert(ListOfOtherStuffs, Stuff())
     end
     TimerNormalOther = TimerNormalOther - dt
 
     if TimerBig <= 0 then
-        TimerBig = math.random(10, 15) * intervalCoef
+        TimerBig = math.random(BigIntervalMin, BigIntervalMax) * intervalCoef
         table.insert(ListOfBigStuffs, BigStuff())
     end
     TimerBig = TimerBig - dt
 
     if TimerSea <= 0 then
-        TimerSea = math.random(15, 25) * intervalCoef
+        TimerSea = math.random(SeaIntervalMin, SeaIntervalMax) * intervalCoef
         table.insert(ListOfBigStuffs, SeaStuff())
     end
     TimerSea = TimerSea - dt
 
     if TimerDiagonal <= 0 then
-        TimerDiagonal = math.random(5, 11) * intervalCoef
+        TimerDiagonal = math.random(DiagonalIntervalMin, DiagonalIntervalMax) * intervalCoef
         table.insert(ListOfDiagonalStuffs, DiagonalStuff(Player.x, Player.width))
     end
     TimerDiagonal = TimerDiagonal - dt
@@ -168,5 +163,13 @@ function love.draw()
     end
 
     love.graphics.print("Score: ".. tostring(PlayerScore), 15, 15)
-    love.graphics.print("If player collides with the stuff, reset the score", 490, 15)
+    love.graphics.print("If player collides with the stuff, reset the score", GameWidth - 300, 15)
+end
+
+
+function love.keypressed(key)
+    -- terminate the game
+    if key == 'escape' then
+        love.event.quit()
+    end
 end

@@ -14,9 +14,11 @@ function BigStuff:new()
     local filename = imagePrefix .. tostring(index) .. ".png"
     self.image = love.graphics.newImage("image/bigStuff/" .. filename)
 
-    -- 1 : 5 ratio
-    self.height = self.image:getHeight() / 5
-    self.width = self.image:getWidth() / 5
+    
+    self.scale = BigStuffScale
+    self.width = self.image:getWidth() * self.scale
+    self.height = self.image:getHeight() * self.scale
+    self.x = math.random(0, GameWidth - self.width * 1.5)
 end
 
 
@@ -34,5 +36,5 @@ end
 
 
 function BigStuff:draw()
-    love.graphics.draw(self.image, self.x, self.y, 0, 0.2, 0.2)
+    love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end

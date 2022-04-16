@@ -15,15 +15,18 @@ function DiagonalStuff:new(playerX, playerWidth)
     local filename = imagePrefix .. tostring(index) .. ".png"
     self.image = love.graphics.newImage("image/diagonalStuff/" .. filename)
 
+    self.scale = DiagonalStuffScale
+    self.width = self.image:getWidth() * self.scale
+    self.height = self.image:getHeight() * self.scale
+
     -- diagonalStuff's x value is dependant on player's x coordinate
-    local window_width = love.graphics.getWidth()
-    if playerX < window_width / 2 then
-        self.x = window_width / 2 + math.random(0, 300)
-        self.targetX = playerX - playerWidth - self.width
+    if playerX < GameWidth / 2 then
+        self.x = GameWidth / 2 + math.random(0, GameWidth / 2)
+        self.targetX = playerX + playerWidth + self.width / 2
         self.isGoingRight = false
     else
-        self.x = window_width / 2 - math.random(0, 300)
-        self.targetX = playerX + playerWidth + self.width
+        self.x = math.random(0, GameWidth / 2)
+        self.targetX = playerX - playerWidth - self.width / 2
         self.isGoingRight = true
     end
     self.y = -self.height
@@ -38,20 +41,18 @@ end
 
 
 function DiagonalStuff:update(dt)
-    local window_width = love.graphics.getWidth()
-    local window_height = love.graphics.getHeight()
 
     -- diagonal Stuff moves like homming missiles toward player at the moment of creation
     -- but not following player's movement throughly to not to make game too difficult
     self.y = self.y + self.speed * dt
     if self.isGoingRight == true then
-        self.x = self.x + self.speed * dt * (self.distanceX / window_width)
+        self.x = self.x + self.speed * dt * (self.distanceX / GameWidth)
     else
-        self.x = self.x - self.speed * dt * (self.distanceX / window_width)
+        self.x = self.x - self.speed * dt * (self.distanceX / GameWidth)
     end
 
 
-    if self.y - self.height > window_height and self.dead == false then
+    if self.y - self.height > GameHeight and self.dead == false then
             ScoreDiagonal:play()
             self.dead = true
     end
@@ -59,5 +60,5 @@ end
 
 
 function SeaStuff:draw()
-    love.graphics.draw(self.image, self.x, self.y, 0, 0.1, 0.1)
+    love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end

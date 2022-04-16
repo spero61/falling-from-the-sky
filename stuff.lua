@@ -31,11 +31,12 @@ function Stuff:new()
         speedCoef = 3
     end
 
-    self.x = math.random(0, 700)
-    self.y = math.random(-300, -100)
+    self.scale = StuffScale
+    self.width = self.image:getWidth() * self.scale
+    self.height = self.image:getHeight() * self.scale
+    self.x = math.random(0, GameWidth - self.width)
+    self.y = math.random(-self.height * 5, -self.height)
     self.speed = math.random(SpeedMin, SpeedMax) * speedCoef
-    self.height = self.image:getHeight() / 10
-    self.width = self.image:getWidth() / 10
     -- self.deg = math.random(120, 240)
     self.dead = false
 end
@@ -56,7 +57,7 @@ end
 function Stuff:draw()
     -- https://love2d.org/wiki/love.graphics.draw
     -- love.graphics.draw(self.image, self.x, self.y, math.rad(self.deg), 0.1, 0.1, self.width / 2, self.height / 2)
-    love.graphics.draw(self.image, self.x, self.y, 0, 0.1, 0.1)
+    love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end
 
 

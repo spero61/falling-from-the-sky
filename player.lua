@@ -1,16 +1,19 @@
 Player = Object:extend()
 
+require "difficulty"
+
 function Player:new()
     self.image = love.graphics.newImage("image/player/player.png")
-    self.x = 380
-    self.y = 520
+    
+    self.scale = PlayerScale
+    self.width = self.image:getWidth() * self.scale
+    self.height = self.image:getHeight() * self.scale
+    self.x = (GameWidth + self.width) / 2
+    self.y = GameHeight - self.height * 1.1
     self.speed = 0 -- current speed
     self.acceleration = 22 -- speed is goes over or below 0 by acceleration
     self.friction = 12 -- the more friction makes the game easier
 
-    -- 1 : 10 ratio
-    self.height = self.image:getHeight() / 10
-    self.width = self.image:getWidth() / 10
 end
 
 
@@ -55,5 +58,5 @@ end
 
 function Player:draw()
     -- https://love2d.org/wiki/love.graphics.draw
-    love.graphics.draw(self.image, self.x, self.y, 0, 0.1, 0.1)
+    love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end
