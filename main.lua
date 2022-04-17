@@ -1,3 +1,6 @@
+local push = require "push"
+local background = love.graphics.newImage("image/background/main.jpg")
+
 function love.load()
     Object = require "classic"
     require "player"
@@ -17,10 +20,14 @@ function love.load()
     -- score
     PlayerScore = 0
     
-    -- love.graphics.setDefaultFilter('nearest', 'nearest')
-    love.window.setMode(GameWidth, GameHeight, {resizable=false, vsync=true})
-    love.graphics.setBackgroundColor(119/255, 136/255, 153/255)
     love.window.setTitle("Falling from the sky")
+    -- love.graphics.setDefaultFilter('nearest', 'nearest')
+    push:setupScreen(GameWidth, GameHeight, 1920, 1080, {
+        vsync = true,
+        fullscreen = false,
+        resizable = false,
+    })
+    -- love.window.setMode(GameWidth, GameHeight, {resizable=false, vsync=true})
 
     -- soundtrack - PLAY
     SoundtrackPlay = love.audio.newSource("sound/soundtrackPlay.ogg", "stream")
@@ -140,6 +147,8 @@ end
 
 
 function love.draw()
+    push:start()
+    love.graphics.draw(background)
     Player:draw()
     
     for i, stuff in ipairs(ListOfStuffs) do
@@ -164,12 +173,16 @@ function love.draw()
 
     love.graphics.print("Score: ".. tostring(PlayerScore), 15, 15)
     love.graphics.print("If player collides with the stuff, reset the score", GameWidth - 300, 15)
+    love.graphics.print("Press 'f' to toggle full screen mode", GameWidth - 228, 35)
+    push:finish()
 end
 
 
 function love.keypressed(key)
     -- terminate the game
-    if key == 'escape' then
+    if key == "escape" then
         love.event.quit()
+    elseif key == "f" then
+        push:switchFullscreen()
     end
 end

@@ -1,5 +1,6 @@
 -- global variables ragarding difficulty in a file so as to make adjusting threshold with an ease
 
+-- WindowWidth, WindowHeight = love.window.getDesktopDimensions()
 GameWidth, GameHeight = 900, 1200 -- fixed game resolution
 
 -- stuff.lua

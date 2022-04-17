@@ -44,13 +44,11 @@ function Player:update(dt)
         self.speed = 0
     end
 
-    local window_width = love.graphics.getWidth()
-
     if self.x < 0 then
         self.x = 4
         self.speed = 0
-    elseif self.x + self.width > window_width then
-        self.x = window_width - self.width - 4
+    elseif self.x + self.width > GameWidth then
+        self.x = GameWidth - self.width - 4
         self.speed = 0
     end
 end
