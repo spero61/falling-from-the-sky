@@ -5,7 +5,7 @@ function DiagonalStuff:new(playerX, playerWidth)
     DiagonalStuff.super:new()
 
     -- since lua does not support "switch"
-    local index = math.random(1, 16)
+    local index = love.math.random(1, 16)
     local imagePrefix = "diagonal"
     if index < 10 then
         imagePrefix = imagePrefix .. "0"
@@ -19,11 +19,11 @@ function DiagonalStuff:new(playerX, playerWidth)
 
     -- diagonalStuff's x value is dependant on player's x coordinate
     if playerX < GameWidth / 2 then
-        self.x = GameWidth / 2 + math.random(0, GameWidth / 2)
+        self.x = GameWidth / 2 + love.math.random(0, GameWidth / 2)
         self.targetX = playerX + playerWidth + self.width / 2
         self.isGoingRight = false
     else
-        self.x = math.random(0, GameWidth / 2)
+        self.x = love.math.random(0, GameWidth / 2)
         self.targetX = playerX - playerWidth - self.width / 2
         self.isGoingRight = true
     end

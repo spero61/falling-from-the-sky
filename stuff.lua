@@ -1,8 +1,8 @@
 Stuff = Object:extend()
 
 function Stuff:new()
-    -- since lua does not support "switch"
-    local index = math.random(1, 40)
+    -- https://love2d.org/wiki/love.math.random
+    local index = love.math.random(1, 40)
     local imagePrefix = "stuff"
     if index < 10 then
         imagePrefix = imagePrefix .. "0"
@@ -32,10 +32,10 @@ function Stuff:new()
     self.scale = StuffScale
     self.width = self.image:getWidth() * self.scale
     self.height = self.image:getHeight() * self.scale
-    self.x = math.random(0, GameWidth - self.width)
-    self.y = math.random(-self.height * 5, -self.height)
-    self.speed = math.random(SpeedMin, SpeedMax) * speedCoef
-    -- self.deg = math.random(120, 240)
+    self.x = love.math.random(0, GameWidth - self.width)
+    self.y = love.math.random(-self.height * 5, -self.height)
+    self.speed = love.math.random(SpeedMin, SpeedMax) * speedCoef
+    -- self.deg = love.math.random(120, 240)
     self.dead = false
 end
 

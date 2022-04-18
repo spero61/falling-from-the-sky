@@ -1,7 +1,7 @@
 SeaStuff = Stuff:extend()
 
 function SeaStuff:new()
-    local index = math.random(1, 20)
+    local index = love.math.random(1, 20)
     local imagePrefix = "sea"
     if index < 10 then
         imagePrefix = imagePrefix .. "0"
@@ -12,7 +12,7 @@ function SeaStuff:new()
     self.scale = SeaStuffScale
     self.width = self.image:getWidth() * self.scale
     self.height = self.image:getHeight() * self.scale
-    self.x = math.random(0, GameWidth - self.width)
+    self.x = love.math.random(0, GameWidth - self.width)
     self.speed = SeaStuffSpeed
     self.dead = false
 
@@ -24,7 +24,7 @@ end
 function SeaStuff:update(dt)
 
     if self.vibrateTimer > 0 then
-        self.y = math.random(15, 20)
+        self.y = love.math.random(15, 20)
     end
     self.vibrateTimer = self.vibrateTimer - dt
 

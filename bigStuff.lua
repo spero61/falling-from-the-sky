@@ -4,7 +4,7 @@ function BigStuff:new()
     BigStuff.super:new()
 
     -- since lua does not support "switch"
-    local index = math.random(1, 30)
+    local index = love.math.random(1, 30)
     local imagePrefix = "big"
     if index < 10 then
         imagePrefix = imagePrefix .. "0"
@@ -16,7 +16,7 @@ function BigStuff:new()
     self.scale = BigStuffScale
     self.width = self.image:getWidth() * self.scale
     self.height = self.image:getHeight() * self.scale
-    self.x = math.random(0, GameWidth - self.width * 1.5)
+    self.x = love.math.random(0, GameWidth - self.width * 1.5)
 end
 
 

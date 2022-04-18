@@ -6,7 +6,7 @@ function Player:new()
     self.scale = PlayerScale
     self.width = self.image:getWidth() * self.scale
     self.height = self.image:getHeight() * self.scale
-    self.x = (GameWidth + self.width) / 2
+    self.x = (GameWidth + self.width) / 2 - self.width
     self.y = GameHeight - self.height * 1.1
     self.speed = 0 -- current speed
     self.acceleration = 22 -- speed is goes over or below 0 by acceleration

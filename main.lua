@@ -118,31 +118,31 @@ function love.update(dt)
 
     -- set timer for time interval event
     if TimerNormal <= 0 then
-        TimerNormal = math.random(NormalIntervalMin, NormalIntervalMax) * intervalCoef
+        TimerNormal = love.math.random(NormalIntervalMin, NormalIntervalMax) * intervalCoef
         table.insert(ListOfStuffs, Stuff())
     end
     TimerNormal = TimerNormal - dt
 
     if TimerNormalOther <= 0 then
-        TimerNormalOther = math.random(NormalOtherIntervalMin, NormalOtherIntervalMax) * intervalCoef
+        TimerNormalOther = love.math.random(NormalOtherIntervalMin, NormalOtherIntervalMax) * intervalCoef
         table.insert(ListOfOtherStuffs, Stuff())
     end
     TimerNormalOther = TimerNormalOther - dt
 
     if TimerBig <= 0 then
-        TimerBig = math.random(BigIntervalMin, BigIntervalMax) * intervalCoef
+        TimerBig = love.math.random(BigIntervalMin, BigIntervalMax) * intervalCoef
         table.insert(ListOfBigStuffs, BigStuff())
     end
     TimerBig = TimerBig - dt
 
     if TimerSea <= 0 then
-        TimerSea = math.random(SeaIntervalMin, SeaIntervalMax) * intervalCoef
+        TimerSea = love.math.random(SeaIntervalMin, SeaIntervalMax) * intervalCoef
         table.insert(ListOfBigStuffs, SeaStuff())
     end
     TimerSea = TimerSea - dt
 
     if TimerDiagonal <= 0 then
-        TimerDiagonal = math.random(DiagonalIntervalMin, DiagonalIntervalMax) * intervalCoef
+        TimerDiagonal = love.math.random(DiagonalIntervalMin, DiagonalIntervalMax) * intervalCoef
         table.insert(ListOfDiagonalStuffs, DiagonalStuff(Player.x, Player.width))
     end
     TimerDiagonal = TimerDiagonal - dt
