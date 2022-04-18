@@ -8,4 +8,7 @@ Reimplementation of Scratch mini game with LÖVE
 - Stuff Images: [Illustration Source and its Policy](https://illust8.com/policy)
 - Background Image: [Liam McGarry - Unsplash](https://unsplash.com/photos/4txHVae2MJ0)
 
-- Library: [Classic - MIT license](https://github.com/rxi/classic)
+### modules:
+
+- [rxi/classic](https://github.com/rxi/classic) a tiny class module
+- [Ulydev/push](https://github.com/Ulydev/push) a simple resolution-handling library

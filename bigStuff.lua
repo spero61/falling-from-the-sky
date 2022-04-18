@@ -1,7 +1,5 @@
 BigStuff = Stuff:extend()
 
-require "difficulty"
-
 function BigStuff:new()
     BigStuff.super:new()
 

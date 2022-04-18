@@ -1,7 +1,5 @@
 Stuff = Object:extend()
 
-require "difficulty"
-
 function Stuff:new()
     -- since lua does not support "switch"
     local index = math.random(1, 40)

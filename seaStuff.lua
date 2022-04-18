@@ -1,7 +1,5 @@
 SeaStuff = Stuff:extend()
 
-require "difficulty"
-
 function SeaStuff:new()
     local index = math.random(1, 20)
     local imagePrefix = "sea"

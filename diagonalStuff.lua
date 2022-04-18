@@ -1,8 +1,6 @@
 -- DiagonalStuff makes a user to move player constantly, as it target's current player's x coordinate
 DiagonalStuff = Stuff:extend()
 
-require "difficulty"
-
 function DiagonalStuff:new(playerX, playerWidth)
     DiagonalStuff.super:new()
 

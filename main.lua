@@ -1,15 +1,19 @@
+ -- a virtual resolution handling library
 local push = require "push"
 local background = love.graphics.newImage("image/background/main.jpg")
 
+-- a tiny class module
+Object = require "classic"
+require "player"
+require "stuff"
+require "bigStuff"
+require "seaStuff"
+require "diagonalStuff"
+
+-- to adjust game difficulty and details in a file
+require "difficulty"
+
 function love.load()
-    Object = require "classic"
-    require "player"
-    require "stuff"
-    require "bigStuff"
-    require "seaStuff"
-    require "diagonalStuff"
-    require "difficulty"
-    
     Player = Player()
     ListOfStuffs = {}
     ListOfOtherStuffs = {}
@@ -17,7 +21,7 @@ function love.load()
     ListOfSeaStuffs = {}
     ListOfDiagonalStuffs = {}
     
-    -- score
+    -- score keeping
     PlayerScore = 0
     
     love.window.setTitle("Falling from the sky")
@@ -27,7 +31,6 @@ function love.load()
         fullscreen = false,
         resizable = false,
     })
-    -- love.window.setMode(GameWidth, GameHeight, {resizable=false, vsync=true})
 
     -- soundtrack - PLAY
     SoundtrackPlay = love.audio.newSource("sound/soundtrackPlay.ogg", "stream")
@@ -35,7 +38,7 @@ function love.load()
     SoundtrackPlay:play()
     
     -- https://love2d.org/wiki/Source:setVolume 
-    SoundtrackPlay:setVolume(0.5)
+    SoundtrackPlay:setVolume(0.2)
 
     -- sfx
     ScoreSmall = love.audio.newSource("sound/scoreNormal.wav", "static")

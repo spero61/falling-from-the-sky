@@ -1,7 +1,5 @@
 Player = Object:extend()
 
-require "difficulty"
-
 function Player:new()
     self.image = love.graphics.newImage("image/player/player.png")
     
