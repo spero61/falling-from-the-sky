@@ -28,7 +28,7 @@ function TitleScreenState:update(dt)
         startTimer = startTimer - dt
     end
     if startTimer < 0 then
-        gStateMachine:change("play")
+        gStateMachine:change("countdown")
     end
 end
 

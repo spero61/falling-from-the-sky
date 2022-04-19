@@ -17,6 +17,7 @@ require "difficulty"
 require "StateMachine"
 require "states/BaseState"
 require "states/TitleScreenState"
+require "states/CountDownState"
 require "states/PlayState"
 require "states/GameOverState"
 
@@ -70,6 +71,7 @@ function love.load()
     
     gStateMachine = StateMachine {
         ["title"] = function() return TitleScreenState() end,
+        ["countdown"] = function() return CountDownState() end,
         ["play"] = function() return PlayState() end,
         ["gameover"] = function() return GameOverState() end,
     }
