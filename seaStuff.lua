@@ -1,6 +1,6 @@
-SeaStuff = Stuff:extend()
+SeaStuff = Class{__includes = Stuff}
 
-function SeaStuff:new()
+function SeaStuff:init()
     local index = love.math.random(1, 20)
     local imagePrefix = "sea"
     if index < 10 then
@@ -9,15 +9,16 @@ function SeaStuff:new()
     local filename = imagePrefix .. tostring(index) .. ".png"
     self.image = love.graphics.newImage("image/seaStuff/" .. filename)
 
-    self.scale = SeaStuffScale
+    self.scale = seaStuffScale
     self.width = self.image:getWidth() * self.scale
     self.height = self.image:getHeight() * self.scale
-    self.x = love.math.random(0, GameWidth - self.width)
-    self.speed = SeaStuffSpeed
+    self.x = love.math.random(0, gameWidth - self.width)
+    self.speed = seaStuffSpeed
+    self.score = seaScore
     self.dead = false
 
     -- for seaStuff specific behavior
-    self.vibrateTimer = VibrateTimer
+    self.vibrateTimer = vibrateTimer
 end
 
 
@@ -42,6 +43,6 @@ function SeaStuff:update(dt)
 end
 
 
-function SeaStuff:draw()
+function SeaStuff:render()
     love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end

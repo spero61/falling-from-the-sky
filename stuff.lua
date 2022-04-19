@@ -1,6 +1,6 @@
-Stuff = Object:extend()
+Stuff = Class{}
 
-function Stuff:new()
+function Stuff:init()
     -- https://love2d.org/wiki/love.math.random
     local index = love.math.random(1, 40)
     local imagePrefix = "stuff"
@@ -10,35 +10,40 @@ function Stuff:new()
     local filename = imagePrefix .. tostring(index) .. ".png"
     self.image = love.graphics.newImage("image/stuff/" .. filename)
 
-    -- speed coefficient
-    local speedCoef = 1
-    -- as the player gets more score, stuff's speed also gets faster
-    if PlayerScore > LevelOne then
-        speedCoef = 1.2
-    elseif PlayerScore > LevelTwo then
-        speedCoef = 1.4
-    elseif PlayerScore > LevelThree then
-        speedCoef = 1.6
-    elseif PlayerScore > LevelFour then
-        speedCoef = 1.8
-    elseif PlayerScore > LevelFive then
-        speedCoef = 2.0
-    elseif PlayerScore > LevelSix then
-        speedCoef = 2.5
-    elseif PlayerScore > LevelSeven then
-        speedCoef = 3
-    end
+    local speedCoef = Stuff:calcSpeedCoef(gPlayerScore)
 
-    self.scale = StuffScale
+    self.scale = stuffScale
     self.width = self.image:getWidth() * self.scale
     self.height = self.image:getHeight() * self.scale
-    self.x = love.math.random(0, GameWidth - self.width)
+    self.x = love.math.random(0, gameWidth - self.width)
     self.y = love.math.random(-self.height * 5, -self.height)
-    self.speed = love.math.random(SpeedMin, SpeedMax) * speedCoef
-    -- self.deg = love.math.random(120, 240)
+    self.speed = love.math.random(speedMin, speedMax) * speedCoef
+    self.score = normalScore
     self.dead = false
 end
 
+function Stuff:calcSpeedCoef(gPlayerScore)
+    -- speed coefficient
+    local speedCoef = 1
+    -- as the player gets more score, stuff's speed also gets faster
+    if gPlayerScore > LevelOne then
+        speedCoef = 1.2
+    elseif gPlayerScore > LevelTwo then
+        speedCoef = 1.4
+    elseif gPlayerScore > LevelThree then
+        speedCoef = 1.6
+    elseif gPlayerScore > LevelFour then
+        speedCoef = 1.8
+    elseif gPlayerScore > LevelFive then
+        speedCoef = 2.0
+    elseif gPlayerScore > LevelSix then
+        speedCoef = 2.5
+    elseif gPlayerScore > LevelSeven then
+        speedCoef = 3
+    end
+
+    return speedCoef
+end
 
 function Stuff:update(dt)
     self.y = self.y + self.speed * dt
@@ -52,9 +57,8 @@ function Stuff:update(dt)
 end
 
 
-function Stuff:draw()
+function Stuff:render()
     -- https://love2d.org/wiki/love.graphics.draw
-    -- love.graphics.draw(self.image, self.x, self.y, math.rad(self.deg), 0.1, 0.1, self.width / 2, self.height / 2)
     love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end
 
@@ -71,6 +75,7 @@ function Stuff:checkCollision(obj)
     local obj_top = obj.y
     local obj_bottom = obj.y + obj.height
 
+
     -- when there is a collision
     if self_left < obj_right
     and self_right > obj_left
@@ -78,7 +83,7 @@ function Stuff:checkCollision(obj)
     and self_bottom > obj_top then
         self.dead = true
 
-        -- Restart the game
-        PlayerScore = 0
+        -- if a player collides with a stuff, set score to zero
+        gPlayerScore = 0
     end
 end

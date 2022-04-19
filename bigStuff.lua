@@ -1,9 +1,6 @@
-BigStuff = Stuff:extend()
+BigStuff = Class{__includes = Stuff}
 
-function BigStuff:new()
-    BigStuff.super:new()
-
-    -- since lua does not support "switch"
+function BigStuff:init()
     local index = love.math.random(1, 30)
     local imagePrefix = "big"
     if index < 10 then
@@ -12,17 +9,22 @@ function BigStuff:new()
     local filename = imagePrefix .. tostring(index) .. ".png"
     self.image = love.graphics.newImage("image/bigStuff/" .. filename)
 
-    
-    self.scale = BigStuffScale
+    local speedCoef = Stuff:calcSpeedCoef(gPlayerScore)
+
+    self.scale = bigStuffScale
     self.width = self.image:getWidth() * self.scale
     self.height = self.image:getHeight() * self.scale
-    self.x = love.math.random(0, GameWidth - self.width * 1.5)
+    self.x = love.math.random(0, gameWidth - self.width * 1.5)
+    self.y = love.math.random(-self.height * 5, -self.height)
+    self.speed = love.math.random(speedMin, speedMax) * speedCoef * bigSpeedCoef
+    self.score = bigScore
+    self.dead = false
 end
 
 
 function BigStuff:update(dt)
     -- twice faster than a normal one
-    self.y = self.y + self.speed * dt * BigSpeedCoef
+    self.y = self.y + self.speed * dt
 
     local window_height = love.graphics.getHeight()
 
@@ -33,6 +35,6 @@ function BigStuff:update(dt)
 end
 
 
-function BigStuff:draw()
+function BigStuff:render()
     love.graphics.draw(self.image, self.x, self.y, 0, self.scale, self.scale)
 end

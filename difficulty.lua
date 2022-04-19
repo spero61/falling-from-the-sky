@@ -1,7 +1,7 @@
 -- global variables ragarding difficulty in a file so as to make adjusting threshold with an ease
 
 -- WindowWidth, WindowHeight = love.window.getDesktopDimensions()
-GameWidth, GameHeight = 900, 1200 -- fixed game resolution
+gameWidth, gameHeight = 900, 1200 -- fixed game resolution
 
 -- stuff.lua
 -- speed coefficient (speedCoef)
@@ -9,7 +9,7 @@ GameWidth, GameHeight = 900, 1200 -- fixed game resolution
 -- main.lua
 -- interval coefficient (intervalCoef)
 
--- a number of PlayerScore that requires proceeds to next level
+-- a number of gPlayerScore that requires proceeds to next level
 LevelOne = 300
 LevelTwo = 700
 LevelThree = 1500
@@ -19,41 +19,41 @@ LevelSix = 7000
 LevelSeven = 9000
 
 -- player.lua
-PlayerScale = 0.125 -- 1 : 8
+playerScale = 0.125 -- 1 : 8
 
 -- stuff.lua
 -- stuff's speed range
-SpeedMin = 150
-SpeedMax = 300
-StuffScale = 0.15
+speedMin = 150
+speedMax = 300
+stuffScale = 0.15
 
 
 -- bigStuff.lua
 -- bigStuff is BigSpeedCoef times faster than the normal one
-BigSpeedCoef = 1.75
-BigStuffScale = 0.25
+bigSpeedCoef = 1.75
+bigStuffScale = 0.25
 
 
 -- seaStuff.lua
 -- seaStuff's VibrateTimer is the time until it starts to fall
-VibrateTimer = 3
+vibrateTimer = 3
 -- seaStuff's speed is quite fast because a player can predict its movement beforehand
-SeaStuffSpeed = 800
-SeaStuffScale = 0.2
+seaStuffSpeed = 800
+seaStuffScale = 0.2
 
 
 -- diagonalStuff.lua
 -- diagonalStuff's speed is important as it can determine game's difficulty significantly
-DiagonalStuffSpeed = 700
-DiagonalStuffScale = 0.15
+diagonalStuffSpeed = 700
+diagonalStuffScale = 0.15
 
 
 -- main.lua
 -- score
-NormalScore = 250
-BigScore = 350
-SeaScore = 400
-DiagonalScore = 500
+normalScore = 250
+bigScore = 350
+seaScore = 400
+diagonalScore = 500
 
 
 -- Timer related
