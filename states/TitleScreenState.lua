@@ -10,6 +10,7 @@ local startTimer = 1
 local background = love.graphics.newImage("image/background/main.jpg")
 
 function TitleScreenState:init()
+    soundtrackTitle:play()
 end
 
 function TitleScreenState:update(dt)
@@ -19,7 +20,8 @@ function TitleScreenState:update(dt)
     -- kpenter: the numpad enter key
     if love.keyboard.isDown("return") or love.keyboard.isDown("kpenter") then
         isPressed = true
-        StartGame:play()
+        soundtrackTitle:stop()
+        startGame:play()
     end
 
     if isPressed then
@@ -35,13 +37,13 @@ function TitleScreenState:render()
     love.graphics.draw(background)
     
     -- title text animation
-    love.graphics.setFont(TitleFont)
+    love.graphics.setFont(titleFont)
     love.graphics.setColor(title.color)
     love.graphics.print(title.text, title.x, title.y)
 
-    love.graphics.setFont(MediumFont)
+    love.graphics.setFont(mediumFont)
     love.graphics.printf("Press f key to toggle full screen mode", 0, 800, gameWidth, "center")
-    love.graphics.setFont(LargeFont)
+    love.graphics.setFont(largeFont)
     love.graphics.printf("Press Enter", 0, 900, gameWidth, "center")
 
 end

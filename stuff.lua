@@ -51,7 +51,7 @@ function Stuff:update(dt)
     local window_height = love.graphics.getHeight()
 
     if self.y - self.height > window_height and self.dead == false then
-            ScoreSmall:play()
+            scoreSmall:play()
             self.dead = true
     end
 end
@@ -84,6 +84,7 @@ function Stuff:checkCollision(obj)
         self.dead = true
 
         -- if a player collides with a stuff, game over
+        soundtrackPlay:stop()
         gStateMachine:change("gameover")
     end
 end

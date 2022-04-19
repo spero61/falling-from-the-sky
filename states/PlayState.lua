@@ -4,7 +4,7 @@ PlayState = Class{__includes = BaseState}
 local background = love.graphics.newImage("image/background/main.jpg")
 
 function PlayState:init()
-    SoundtrackPlay:play()
+    soundtrackPlay:play()
 end
 
 function PlayState:update(dt)
@@ -132,7 +132,7 @@ function PlayState:render()
         diagonalStuff:render()
     end
 
-    love.graphics.setFont(LargeFont)
+    love.graphics.setFont(largeFont)
     love.graphics.setColor(love.math.colorFromBytes(239, 242, 156))
     love.graphics.print("Score: ".. tostring(gPlayerScore), 15, 15)
 end

@@ -50,21 +50,21 @@ diagonalStuffScale = 0.15
 
 -- main.lua
 -- score
-normalScore = 250
-bigScore = 350
-seaScore = 400
-diagonalScore = 500
+normalScore = 70
+bigScore = 150
+seaScore = 200
+diagonalScore = 250
 
 
 -- Timer related
 TimerNormal = 3
 TimerNormalOther = 5
 TimerBig = 7
-TimerSea = 3
-TimerDiagonal = 4
+TimerSea = 18
+TimerDiagonal = 25
 
 NormalIntervalMin, NormalIntervalMax = 1, 3
 NormalOtherIntervalMin, NormalOtherIntervalMax = 2, 5
 BigIntervalMin, BigIntervalMax = 10, 15
 SeaIntervalMin, SeaIntervalMax = 5, 12
-DiagonalIntervalMin, DiagonalIntervalMax = 2, 5
+DiagonalIntervalMin, DiagonalIntervalMax = 8, 15

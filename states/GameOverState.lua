@@ -15,7 +15,8 @@ function GameOverState:init()
         end
     end
 
-    SoundtrackPlay:stop()
+    soundtrackPlay:stop()
+    soundtrackGameOver:play()
     love.graphics.setBackgroundColor(love.math.colorFromBytes(102, 103, 171)) -- Very Peri
 end
 
@@ -23,7 +24,7 @@ function GameOverState:update(dt)
     titleTween:update(dt)
 
     if love.keyboard.isDown("return") or love.keyboard.isDown("kpenter") then
-        StartGame:play()
+        startGame:play()
         -- restart the game
         love.load()
         gStateMachine:change("play")
@@ -33,15 +34,15 @@ end
 function GameOverState:render()
     love.graphics.draw(background)
     -- title text animation
-    love.graphics.setFont(TitleFont)
+    love.graphics.setFont(titleFont)
     love.graphics.setColor(title.color)
     love.graphics.print(title.text, title.x, title.y)
 
-    love.graphics.setFont(MediumFont)
+    love.graphics.setFont(mediumFont)
     love.graphics.printf("Press enter to restart", 0, 750, gameWidth, "center")
     love.graphics.printf("Press esc to exit", 0, 800, gameWidth, "center")
 
-    love.graphics.setFont(LargeFont)
+    love.graphics.setFont(largeFont)
     love.graphics.setColor(love.math.colorFromBytes(239, 242, 156))
     love.graphics.printf("Highest Score: " .. gHighestScore, 0, 900, gameWidth, "center")
     

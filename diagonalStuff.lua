@@ -48,7 +48,7 @@ function DiagonalStuff:update(dt)
 
 
     if self.y - self.height > gameHeight and self.dead == false then
-            ScoreDiagonal:play()
+            scoreDiagonal:play()
             self.dead = true
     end
 end
