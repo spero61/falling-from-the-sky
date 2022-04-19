@@ -1,6 +1,5 @@
  -- a virtual resolution handling library
 local push = require "push"
-local background = love.graphics.newImage("image/background/main.jpg")
 
 -- a classic OOP class library
 Class = require "class"
@@ -19,6 +18,10 @@ require "StateMachine"
 require "states/BaseState"
 require "states/TitleScreenState"
 require "states/PlayState"
+require "states/GameOverState"
+
+-- score keeping
+gHighestScore = 0
 
 function love.load()
     player = Player()
@@ -28,8 +31,8 @@ function love.load()
     listOfSeaStuffs = {}
     listOfDiagonalStuffs = {}
 
-    -- score keeping
     gPlayerScore = 0
+    isNewRecord = false
     
     love.window.setTitle("Falling from the sky")
     -- love.graphics.setDefaultFilter('nearest', 'nearest')
@@ -40,10 +43,11 @@ function love.load()
     })
 
     gStateMachine = StateMachine {
-        ['title'] = function() return TitleScreenState() end,
-        ['play'] = function() return PlayState() end,
+        ["title"] = function() return TitleScreenState() end,
+        ["play"] = function() return PlayState() end,
+        ["gameover"] = function() return GameOverState() end,
     }
-    gStateMachine:change('title')
+    gStateMachine:change("title")
 
     -- initialize text fonts
     SmallFont = love.graphics.newFont("Boogaloo-Regular.ttf", 18)

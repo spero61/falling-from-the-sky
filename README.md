@@ -6,10 +6,12 @@ Reimplementation of Scratch mini game with LÖVE
 - Soundtrack: [GarageBand](https://www.apple.com/mac/garageband/)
 - SFX: [Bfxr Standalone V1.5.1](https://www.bfxr.net/)
 - Stuff Images: [Illustration Source and its Policy](https://illust8.com/policy)
-- Background Image: [Liam McGarry - Unsplash](https://unsplash.com/photos/4txHVae2MJ0)
+- Background Images:
+  -- [Unsplash - Liam McGarry](https://unsplash.com/photos/4txHVae2MJ0) main.jpg
+  -- [Unsplash - Folco Masi](https://unsplash.com/photos/6tbZUEqruQQ) gameover.jpg
 - Fonts:
-  --[Boogaloo-Regular]()
-  -- [orange juice 2.0]()
+  -- [Boogaloo-Regular](https://fonts.google.com/specimen/Boogaloo?query=boogaloo)
+  -- [orange juice 2.0](https://www.1001freefonts.com/orange-juice.font)
 
 - modules:
   -- [vrld/hump/class.lua](https://github.com/vrld/hump) a classic OOP class library

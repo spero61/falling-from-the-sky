@@ -10,7 +10,6 @@ local startTimer = 1
 local background = love.graphics.newImage("image/background/main.jpg")
 
 function TitleScreenState:init()
-    PlayerScore = 0
 end
 
 function TitleScreenState:update(dt)

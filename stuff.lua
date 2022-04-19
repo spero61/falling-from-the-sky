@@ -83,7 +83,7 @@ function Stuff:checkCollision(obj)
     and self_bottom > obj_top then
         self.dead = true
 
-        -- if a player collides with a stuff, set score to zero
-        gPlayerScore = 0
+        -- if a player collides with a stuff, game over
+        gStateMachine:change("gameover")
     end
 end
