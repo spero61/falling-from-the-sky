@@ -3,9 +3,8 @@ GameOverState = Class{__includes = BaseState}
 
 local background = love.graphics.newImage("image/background/gameover.jpg")
 
-local tween = require "tween"
 local title = { text = "Game Over", x=250, y=gameHeight, color = {213, 227, 249} }
-local titleTween = tween.new(3, title, {x=250, y=200})
+local titleTween = Tween.new(3, title, {x=250, y=200})
 
 function GameOverState:init()
     if gHighestScore <= gPlayerScore then
@@ -17,7 +16,6 @@ function GameOverState:init()
 
     soundtrackPlay:stop()
     soundtrackGameOver:play()
-    love.graphics.setBackgroundColor(love.math.colorFromBytes(102, 103, 171)) -- Very Peri
 end
 
 function GameOverState:update(dt)
@@ -41,11 +39,14 @@ function GameOverState:render()
     love.graphics.print(title.text, title.x, title.y)
 
     love.graphics.setFont(mediumFont)
-    love.graphics.printf("Press enter to restart", 0, 750, gameWidth, "center")
-    love.graphics.printf("Press esc to exit", 0, 800, gameWidth, "center")
+    love.graphics.printf("Press enter to restart", 0, 700, gameWidth, "center")
+    love.graphics.printf("Press esc to exit", 0, 750, gameWidth, "center")
 
-    love.graphics.setFont(largeFont)
+    love.graphics.setColor(love.math.colorFromBytes(145, 235, 156))
+    love.graphics.setFont(mediumFont)
+    love.graphics.printf("Your Score: " .. gPlayerScore, 0, 850, gameWidth, "center")
     love.graphics.setColor(love.math.colorFromBytes(239, 242, 156))
+    love.graphics.setFont(largeFont)
     love.graphics.printf("Highest Score: " .. gHighestScore, 0, 900, gameWidth, "center")
     
     if isNewRecord then 

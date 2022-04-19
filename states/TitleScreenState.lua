@@ -1,9 +1,8 @@
 -- starting screen of the game, shown on startup
 TitleScreenState = Class{__includes = BaseState}
 
-local tween = require "tween"
 local title = { text = "Falling from the Sky", x=90, y=10, color = {213, 227, 249} }
-local titleTween = tween.new(1.2, title, {x=90, y=90})
+local titleTween = Tween.new(1.2, title, {x=90, y=90})
 
 local isPressed = false
 local startTimer = 1

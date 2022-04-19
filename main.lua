@@ -1,20 +1,38 @@
- -- a virtual resolution handling library
-local push = require "push"
+--[[
+    CS50x final project
+    Falling from the Sky
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    -- Dependencies --
+     [vrld/hump/class.lua](https://github.com/vrld/hump) a classic OOP class library
+     [Ulydev/push](https://github.com/Ulydev/push) a simple resolution-handling library
+     [kikito/tween](https://github.com/kikito/tween.lua) small sets of functions for performing tweening in Lua
+
+    A file to organize global dependencies, game assets to this project.
+]]
+
+-- a virtual resolution handling library
+local push = require "lib/push"
 
 -- a classic OOP class library
-Class = require "class"
+Class = require "lib/class"
 
-require "Player"
-require "Stuff"
-require "BigStuff"
-require "SeaStuff"
-require "DiagonalStuff"
+-- a LÖVE animation library
+Tween = require "lib/tween"
+
+require "src/Player"
+require "src/Stuff"
+require "src/BigStuff"
+require "src/SeaStuff"
+require "src/DiagonalStuff"
 
 -- to adjust game difficulty and details in a file
-require "difficulty"
+require "src/difficulty"
 
 -- game state and state machines
-require "StateMachine"
+require "src/StateMachine"
 require "states/BaseState"
 require "states/TitleScreenState"
 require "states/CountDownState"
@@ -28,21 +46,14 @@ gHighestScore = 0
 isFullScreen = false
 
 function love.load()
-    player = Player()
-    listOfStuffs = {}
-    listOfOtherStuffs = {}
-    listOfBigStuffs = {}
-    listOfSeaStuffs = {}
-    listOfDiagonalStuffs = {}
-
     gPlayerScore = 0
     isNewRecord = false
     
     -- initialize text fonts
-    smallFont = love.graphics.newFont("Boogaloo-Regular.ttf", 18)
-    mediumFont = love.graphics.newFont("Boogaloo-Regular.ttf", 32)
-    largeFont = love.graphics.newFont("Boogaloo-Regular.ttf", 48)
-    titleFont = love.graphics.newFont("orange juice 2.0.ttf", 90)
+    smallFont = love.graphics.newFont("fonts/Boogaloo-Regular.ttf", 18)
+    mediumFont = love.graphics.newFont("fonts/Boogaloo-Regular.ttf", 32)
+    largeFont = love.graphics.newFont("fonts/Boogaloo-Regular.ttf", 48)
+    titleFont = love.graphics.newFont("fonts/orange juice 2.0.ttf", 90)
     love.graphics.setFont(mediumFont) -- default font
     
     -- soundtrack
@@ -62,6 +73,10 @@ function love.load()
     scoreBig = love.audio.newSource("sound/sfx/scoreBig.wav", "static")
     scoreSea = love.audio.newSource("sound/sfx/scoreSea.wav", "static")
     scoreDiagonal = love.audio.newSource("sound/sfx/scoreDiagonal.wav", "static")
+    listOfSfx = {startGame, scoreSmall, scoreBig, scoreSea, scoreDiagonal}
+    for i, sfx in ipairs(listOfSfx) do
+        sfx:setVolume(0.6)
+    end
 
     love.window.setTitle("Falling from the sky")
     -- love.graphics.setDefaultFilter('nearest', 'nearest')

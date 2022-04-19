@@ -5,10 +5,17 @@ local background = love.graphics.newImage("image/background/main.jpg")
 
 function PlayState:init()
     soundtrackPlay:play()
+
+    player = Player()
+
+    listOfStuffs = {}
+    listOfOtherStuffs = {}
+    listOfBigStuffs = {}
+    listOfSeaStuffs = {}
+    listOfDiagonalStuffs = {}
 end
 
 function PlayState:update(dt)
-   
     player:update(dt)
 
     for i, stuff in ipairs(listOfStuffs) do
@@ -59,20 +66,13 @@ function PlayState:update(dt)
     
     -- the smaller coefficient the shorter interval between stuffs
     local intervalCoef = 1
-    if gPlayerScore > LevelOne then
-        intervalCoef = 0.8
-    elseif gPlayerScore > LevelTwo then
-        intervalCoef = 0.6
-    elseif gPlayerScore > LevelThree then
-        intervalCoef = 0.4
-    elseif gPlayerScore > LevelFour then
-        intervalCoef = 0.3
-    elseif gPlayerScore > LevelFive then
-        intervalCoef = 0.2
-    elseif gPlayerScore > LevelSix then
-        intervalCoef = 0.15
-    elseif gPlayerScore > LevelSeven then
-        intervalCoef = 0.1
+    if gPlayerScore > LevelOne then intervalCoef = 0.8
+    elseif gPlayerScore > LevelTwo then intervalCoef = 0.6
+    elseif gPlayerScore > LevelThree then intervalCoef = 0.4
+    elseif gPlayerScore > LevelFour then intervalCoef = 0.3
+    elseif gPlayerScore > LevelFive then intervalCoef = 0.2
+    elseif gPlayerScore > LevelSix then intervalCoef = 0.15
+    elseif gPlayerScore > LevelSeven then intervalCoef = 0.1
     end
 
     -- set timer for time interval event
