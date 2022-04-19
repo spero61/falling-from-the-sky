@@ -32,6 +32,13 @@ function love.load()
         resizable = false,
     })
 
+    -- initialize text fonts
+    SmallFont = love.graphics.newFont("Boogaloo-Regular.ttf", 18)
+    MediumFont = love.graphics.newFont("Boogaloo-Regular.ttf", 32)
+    LargeFont = love.graphics.newFont("Boogaloo-Regular.ttf", 48)
+    TitleFont = love.graphics.newFont("orange juice 2.0.ttf", 80)
+    love.graphics.setFont(MediumFont) -- default font
+
     -- soundtrack - PLAY
     SoundtrackPlay = love.audio.newSource("sound/soundtrackPlay.ogg", "stream")
     SoundtrackPlay:setLooping(true)
@@ -174,9 +181,10 @@ function love.draw()
         diagonalStuff:draw()
     end
 
+    love.graphics.setFont(MediumFont)
+    love.graphics.print("Press f key to toggle full screen mode", GameWidth - 430, 25)
+    love.graphics.setFont(LargeFont)
     love.graphics.print("Score: ".. tostring(PlayerScore), 15, 15)
-    love.graphics.print("If player collides with the stuff, reset the score", GameWidth - 300, 15)
-    love.graphics.print("Press 'f' to toggle full screen mode", GameWidth - 228, 35)
     push:finish()
 end
 
