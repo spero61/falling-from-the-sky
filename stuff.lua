@@ -48,9 +48,7 @@ end
 function Stuff:update(dt)
     self.y = self.y + self.speed * dt
 
-    local window_height = love.graphics.getHeight()
-
-    if self.y - self.height > window_height and self.dead == false then
+    if self.y - self.height > gameHeight and self.dead == false then
             scoreSmall:play()
             self.dead = true
     end
@@ -74,7 +72,6 @@ function Stuff:checkCollision(obj)
     local obj_right = obj.x + obj.width
     local obj_top = obj.y
     local obj_bottom = obj.y + obj.height
-
 
     -- when there is a collision
     if self_left < obj_right

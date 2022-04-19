@@ -26,9 +26,7 @@ function BigStuff:update(dt)
     -- twice faster than a normal one
     self.y = self.y + self.speed * dt
 
-    local window_height = love.graphics.getHeight()
-
-    if self.y - self.height > window_height and self.dead == false then
+    if self.y - self.height > gameHeight and self.dead == false then
             scoreBig:play()
             self.dead = true
     end

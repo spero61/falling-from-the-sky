@@ -24,6 +24,9 @@ require "states/GameOverState"
 -- score keeping
 gHighestScore = 0
 
+-- keep fullscreen option
+isFullScreen = false
+
 function love.load()
     player = Player()
     listOfStuffs = {}
@@ -34,7 +37,6 @@ function love.load()
 
     gPlayerScore = 0
     isNewRecord = false
-    
     
     -- initialize text fonts
     smallFont = love.graphics.newFont("Boogaloo-Regular.ttf", 18)
@@ -69,6 +71,11 @@ function love.load()
         resizable = false,
     })
     
+    -- keep screen mode when restart the game from GameOverState
+    if isFullScreen then
+        push:switchFullscreen()
+    end
+
     gStateMachine = StateMachine {
         ["title"] = function() return TitleScreenState() end,
         ["countdown"] = function() return CountDownState() end,
@@ -102,5 +109,10 @@ function love.keypressed(key)
 
     elseif key == "f" then
         push:switchFullscreen()
+        if isFullScreen == false then
+            isFullScreen = true
+        else
+            isFullScreen = false
+        end
     end
 end

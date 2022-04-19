@@ -25,9 +25,11 @@ function GameOverState:update(dt)
 
     if love.keyboard.isDown("return") or love.keyboard.isDown("kpenter") then
         startGame:play()
+        soundtrackGameOver:stop()
         -- restart the game
         love.load()
-        gStateMachine:change("play")
+        soundtrackTitle:stop()
+        gStateMachine:change("countdown")
     end
 end
 
