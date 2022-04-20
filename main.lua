@@ -2,6 +2,8 @@
     CS50x final project
     Falling from the Sky
 
+    -- main.lua --
+
     Author: Yoru Sung
     https://github.com/spero61/falling-from-the-sky
 
@@ -12,7 +14,6 @@
 
     A file to organize global dependencies, game assets to this project.
 ]]
-
 -- a virtual resolution handling library
 local push = require "lib/push"
 
@@ -102,9 +103,7 @@ end
 
 
 function love.update(dt)
-
     gStateMachine:update(dt)
-
 end
 
 

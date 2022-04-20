@@ -1,3 +1,12 @@
+--[[
+    Falling from the Sky
+
+    -- Player Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+]]
 Player = Class{}
 
 function Player:init()
@@ -11,7 +20,6 @@ function Player:init()
     self.speed = 0 -- current speed
     self.acceleration = 22 -- speed is goes over or below 0 by acceleration
     self.friction = 12 -- the more friction makes the game easier
-
 end
 
 

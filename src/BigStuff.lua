@@ -1,3 +1,15 @@
+--[[
+    Falling from the Sky
+
+    -- BigStuff Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    BigStuff is slightly bigger than ordinary 'Stuff's
+    and faster than 'Stuff' by 'bigSpeedCoef' times
+    which can be set in a difficulty.lua file.
+]]
 BigStuff = Class{__includes = Stuff}
 
 function BigStuff:init()

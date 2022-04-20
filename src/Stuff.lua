@@ -1,3 +1,20 @@
+--[[
+    Falling from the Sky
+
+    -- Stuff Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    Used as base class for other 'stuff' classes.
+    Deal with collision detection by defining checkCollision function.
+    class.lua is used as Lua does not support 'Class' natively.
+    Stuff related difficulty factors can be manipulated
+    by changing variables in a 'difficulty.lua' file.
+
+    This class also handles game state transition from
+    PlayState to GameOverState when a player collides with a stuff.
+]]
 Stuff = Class{}
 
 function Stuff:init()
@@ -22,6 +39,7 @@ function Stuff:init()
     self.dead = false
 end
 
+
 function Stuff:calcSpeedCoef(gPlayerScore)
     -- speed coefficient
     local speedCoef = 1
@@ -44,6 +62,7 @@ function Stuff:calcSpeedCoef(gPlayerScore)
 
     return speedCoef
 end
+
 
 function Stuff:update(dt)
     self.y = self.y + self.speed * dt

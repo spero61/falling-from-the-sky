@@ -1,4 +1,14 @@
--- global variables ragarding difficulty in a file so as to make adjusting threshold with an ease
+--[[
+    Falling from the Sky
+
+    -- difficulty.lua --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    Stores global variables ragarding difficulty in a file
+    so as to make adjusting threshold with an ease.
+]]
 
 -- WindowWidth, WindowHeight = love.window.getDesktopDimensions()
 gameWidth, gameHeight = 900, 1200 -- fixed game resolution

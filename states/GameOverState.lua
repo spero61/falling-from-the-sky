@@ -1,4 +1,16 @@
--- displaying hige score, shown on game over
+--[[
+    Falling from the Sky
+
+    -- GameOverState Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    Show highest score and player score.
+    If the current player score breaks the new record,
+    display "New Record !!" message on the screen.
+    A user can restart the game by pressing 'enter' or 'return' key.
+]]
 GameOverState = Class{__includes = BaseState}
 
 local background = love.graphics.newImage("image/background/gameover.jpg")
@@ -18,6 +30,7 @@ function GameOverState:init()
     soundtrackGameOver:play()
 end
 
+
 function GameOverState:update(dt)
     titleTween:update(dt)
 
@@ -30,6 +43,7 @@ function GameOverState:update(dt)
         gStateMachine:change("countdown")
     end
 end
+
 
 function GameOverState:render()
     love.graphics.draw(background)

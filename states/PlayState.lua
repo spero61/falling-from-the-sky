@@ -1,4 +1,17 @@
--- main game play state
+--[[
+    Falling from the Sky
+
+    -- PlayState Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    Handles game play logic. A user can control player character.
+    'a' or 'left' key to move left and 'd' or 'right' key to move right.
+    when a 'stuff' falls beyond the bottom of the window, a user earns
+    score with respect to its type of stuff.
+    When a 'stuff' collides with the player character, transition to GameOverState.
+]]
 PlayState = Class{__includes = BaseState}
 
 local background = love.graphics.newImage("image/background/main.jpg")
@@ -14,6 +27,7 @@ function PlayState:init()
     listOfSeaStuffs = {}
     listOfDiagonalStuffs = {}
 end
+
 
 function PlayState:update(dt)
     player:update(dt)
@@ -63,7 +77,6 @@ function PlayState:update(dt)
         end
     end
 
-    
     -- the smaller coefficient the shorter interval between stuffs
     local intervalCoef = 1
     if gPlayerScore > LevelOne then intervalCoef = 0.8
@@ -105,8 +118,8 @@ function PlayState:update(dt)
         table.insert(listOfDiagonalStuffs, DiagonalStuff(player.x, player.width))
     end
     TimerDiagonal = TimerDiagonal - dt
-    
 end
+
 
 function PlayState:render()
     love.graphics.draw(background)

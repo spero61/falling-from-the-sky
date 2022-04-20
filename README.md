@@ -2,6 +2,18 @@
 
 Reimplementation of Scratch mini game with LÖVE
 
+### Scratch version: [original version link](https://scratch.mit.edu/projects/554523909/)
+
+<details open>
+  <summary>Scratch version screenshot</summary>
+  <br>
+  <image alt="scratch version play screenshot gif" src="./screenshot/scratch-version.gif">
+</details>
+
+# &nbsp;
+
+## LÖVE version credits
+
 1. Game Engine: [LÖVE 11.4](https://love2d.org/)
 2. SFX: [Bfxr Standalone V1.5.1](https://www.bfxr.net/)
 3. Soundtracks: [abstractionmusic](http://www.abstractionmusic.com/)

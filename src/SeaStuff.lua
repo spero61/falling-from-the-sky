@@ -1,3 +1,14 @@
+--[[
+    Falling from the Sky
+
+    -- SeaStuff Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    SeaStuff vibrates at the top of the game window for a couple of seconds
+    upon creation of its object. Then falls faster than other 'stuff's.
+]]
 SeaStuff = Class{__includes = Stuff}
 
 function SeaStuff:init()
@@ -23,7 +34,6 @@ end
 
 
 function SeaStuff:update(dt)
-
     if self.vibrateTimer > 0 then
         self.y = love.math.random(15, 20)
     end

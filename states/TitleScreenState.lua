@@ -1,4 +1,15 @@
--- starting screen of the game, shown on startup
+--[[
+    Falling from the Sky
+
+    -- TitleScreenState Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    Starting screen of the game, shown on startup.
+    If a user press 'enter' or 'return' key, GameMachine changes its state
+    to CountDownState, then transition to PlayState after countdown is finished.
+]]
 TitleScreenState = Class{__includes = BaseState}
 
 local title = { text = "Falling from the Sky", x=90, y=10, color = {213, 227, 249} }
@@ -11,6 +22,7 @@ local background = love.graphics.newImage("image/background/main.jpg")
 function TitleScreenState:init()
     soundtrackTitle:play()
 end
+
 
 function TitleScreenState:update(dt)
     titleTween:update(dt)
@@ -31,6 +43,7 @@ function TitleScreenState:update(dt)
     end
 end
 
+
 function TitleScreenState:render()
     love.graphics.setColor(1, 1, 1, 0.8)
     love.graphics.draw(background)
@@ -44,5 +57,4 @@ function TitleScreenState:render()
     love.graphics.printf("Press f key to toggle full screen mode", 0, 800, gameWidth, "center")
     love.graphics.setFont(largeFont)
     love.graphics.printf("Press Enter", 0, 900, gameWidth, "center")
-
 end

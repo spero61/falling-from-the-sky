@@ -1,4 +1,14 @@
--- DiagonalStuff makes a user to move player constantly, as it target's current player's x coordinate
+--[[
+    Falling from the Sky
+
+    -- DiagonalStuff Class --
+
+    Author: Yoru Sung
+    https://github.com/spero61/falling-from-the-sky
+
+    DiagonalStuff makes a user to move player constantly,
+    as it target's current player's x coordinate.
+]]
 DiagonalStuff = Class{__includes = Stuff}
 
 function DiagonalStuff:init(playerX, playerWidth)
@@ -36,7 +46,6 @@ end
 
 
 function DiagonalStuff:update(dt)
-
     -- diagonal Stuff moves like homming missiles toward player at the moment of creation
     -- but not following player's movement throughly to not to make game too difficult
     self.y = self.y + self.speed * dt
@@ -45,7 +54,6 @@ function DiagonalStuff:update(dt)
     else
         self.x = self.x - self.speed * dt * (self.distanceX / gameWidth)
     end
-
 
     if self.y - self.height > gameHeight and self.dead == false then
             scoreDiagonal:play()
