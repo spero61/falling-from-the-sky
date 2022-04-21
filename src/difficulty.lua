@@ -20,10 +20,10 @@ gameWidth, gameHeight = 900, 1200 -- fixed game resolution
 -- interval coefficient (intervalCoef)
 
 -- a number of gPlayerScore that requires proceeds to next level
-LevelOne = 300
-LevelTwo = 700
-LevelThree = 1500
-LevelFour = 3000
+LevelOne = 500
+LevelTwo = 1200
+LevelThree = 2500
+LevelFour = 3500
 LevelFive = 5000
 LevelSix = 7000
 LevelSeven = 9000
@@ -33,8 +33,8 @@ playerScale = 0.125 -- 1 : 8
 
 -- stuff.lua
 -- stuff's speed range
-speedMin = 150
-speedMax = 300
+speedMin = 180
+speedMax = 330
 stuffScale = 0.15
 
 
@@ -48,33 +48,33 @@ bigStuffScale = 0.25
 -- seaStuff's VibrateTimer is the time until it starts to fall
 vibrateTimer = 3
 -- seaStuff's speed is quite fast because a player can predict its movement beforehand
-seaStuffSpeed = 800
+seaStuffSpeed = 850
 seaStuffScale = 0.2
 
 
 -- diagonalStuff.lua
 -- diagonalStuff's speed is important as it can determine game's difficulty significantly
-diagonalStuffSpeed = 700
+diagonalStuffSpeed = 750
 diagonalStuffScale = 0.15
 
 
 -- main.lua
 -- score
 normalScore = 70
-bigScore = 150
-seaScore = 200
-diagonalScore = 250
+bigScore = 120
+seaScore = 180
+diagonalScore = 210
 
 
 -- Timer related
 TimerNormal = 1
 TimerNormalOther = 2
-TimerBig = 7
-TimerSea = 18
-TimerDiagonal = 25
+TimerBig = 5
+TimerSea = 17
+TimerDiagonal = 30
 
 NormalIntervalMin, NormalIntervalMax = 1, 3
 NormalOtherIntervalMin, NormalOtherIntervalMax = 2, 5
-BigIntervalMin, BigIntervalMax = 10, 15
-SeaIntervalMin, SeaIntervalMax = 5, 12
-DiagonalIntervalMin, DiagonalIntervalMax = 8, 15
+BigIntervalMin, BigIntervalMax = 5, 8
+SeaIntervalMin, SeaIntervalMax = 7, 12
+DiagonalIntervalMin, DiagonalIntervalMax = 9, 18
