@@ -19,17 +19,20 @@ gameWidth, gameHeight = 900, 1200 -- fixed game resolution
 -- main.lua
 -- interval coefficient (intervalCoef)
 
+
 -- a number of gPlayerScore that requires proceeds to next level
-LevelOne = 500
-LevelTwo = 1200
-LevelThree = 2500
-LevelFour = 3500
-LevelFive = 5000
-LevelSix = 7000
-LevelSeven = 9000
+LevelOne = 1000
+LevelTwo = 2000
+LevelThree = 3500
+LevelFour = 5000
+LevelFive = 7000
+LevelSix = 9000
+LevelSeven = 15000
+
 
 -- player.lua
 playerScale = 0.125 -- 1 : 8
+
 
 -- stuff.lua
 -- stuff's speed range
@@ -60,20 +63,13 @@ diagonalStuffScale = 0.15
 
 -- main.lua
 -- score
-normalScore = 100
+normalScore = 90
 bigScore = 170
-seaScore = 220
-diagonalScore = 270 
+seaScore = 210
+diagonalScore = 250 
 
 
 -- Timer related
-TimerNormal = 1
-TimerNormalOther = 2
-TimerBig = 5
-TimerSea = 10
-TimerDiagonal = 15
-
-
 -- 1, 3 means set its timer randomly between 1 and 3
 NormalIntervalMin, NormalIntervalMax = 1, 3
 NormalOtherIntervalMin, NormalOtherIntervalMax = 2, 5
