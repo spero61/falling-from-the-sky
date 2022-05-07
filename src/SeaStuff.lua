@@ -18,6 +18,7 @@ function SeaStuff:init()
         imagePrefix = imagePrefix .. "0"
     end
     local filename = imagePrefix .. tostring(index) .. ".png"
+---@diagnostic disable-next-line: missing-parameter
     self.image = love.graphics.newImage("image/seaStuff/" .. filename)
 
     self.scale = seaStuffScale

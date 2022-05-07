@@ -19,6 +19,7 @@ function BigStuff:init()
         imagePrefix = imagePrefix .. "0"
     end
     local filename = imagePrefix .. tostring(index) .. ".png"
+---@diagnostic disable-next-line: missing-parameter
     self.image = love.graphics.newImage("image/bigStuff/" .. filename)
 
     local speedCoef = Stuff:calcSpeedCoef(gPlayerScore)

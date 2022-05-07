@@ -13,6 +13,7 @@
 ]]
 GameOverState = Class{__includes = BaseState}
 
+---@diagnostic disable-next-line: missing-parameter
 local background = love.graphics.newImage("image/background/gameover.jpg")
 
 local title = { text = "Game Over", x=250, y=gameHeight, color = {213, 227, 249} }

@@ -10,6 +10,7 @@
 Player = Class{}
 
 function Player:init()
+---@diagnostic disable-next-line: missing-parameter
     self.image = love.graphics.newImage("image/player/player.png")
     
     self.scale = playerScale

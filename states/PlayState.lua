@@ -14,6 +14,7 @@
 ]]
 PlayState = Class{__includes = BaseState}
 
+---@diagnostic disable-next-line: missing-parameter
 local background = love.graphics.newImage("image/background/main.jpg")
 
 function PlayState:init()

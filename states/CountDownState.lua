@@ -15,6 +15,7 @@ CountDownState = Class{__includes = BaseState}
 
 local countDownSecond = 0.8
 
+---@diagnostic disable-next-line: missing-parameter
 local background = love.graphics.newImage("image/background/main.jpg")
 
 function CountDownState:init()

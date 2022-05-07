@@ -33,8 +33,8 @@ playerScale = 0.125 -- 1 : 8
 
 -- stuff.lua
 -- stuff's speed range
-speedMin = 180
-speedMax = 330
+speedMin = 250
+speedMax = 400
 stuffScale = 0.15
 
 
@@ -48,33 +48,35 @@ bigStuffScale = 0.25
 -- seaStuff's VibrateTimer is the time until it starts to fall
 vibrateTimer = 3
 -- seaStuff's speed is quite fast because a player can predict its movement beforehand
-seaStuffSpeed = 850
+seaStuffSpeed = 900
 seaStuffScale = 0.2
 
 
 -- diagonalStuff.lua
 -- diagonalStuff's speed is important as it can determine game's difficulty significantly
-diagonalStuffSpeed = 750
+diagonalStuffSpeed = 800
 diagonalStuffScale = 0.15
 
 
 -- main.lua
 -- score
-normalScore = 70
-bigScore = 120
-seaScore = 180
-diagonalScore = 210
+normalScore = 100
+bigScore = 170
+seaScore = 220
+diagonalScore = 270 
 
 
 -- Timer related
 TimerNormal = 1
 TimerNormalOther = 2
 TimerBig = 5
-TimerSea = 17
-TimerDiagonal = 30
+TimerSea = 10
+TimerDiagonal = 15
 
+
+-- 1, 3 means set its timer randomly between 1 and 3
 NormalIntervalMin, NormalIntervalMax = 1, 3
 NormalOtherIntervalMin, NormalOtherIntervalMax = 2, 5
 BigIntervalMin, BigIntervalMax = 5, 8
 SeaIntervalMin, SeaIntervalMax = 7, 12
-DiagonalIntervalMin, DiagonalIntervalMax = 9, 18
+DiagonalIntervalMin, DiagonalIntervalMax = 8, 10

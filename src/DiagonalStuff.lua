@@ -18,6 +18,7 @@ function DiagonalStuff:init(playerX, playerWidth)
         imagePrefix = imagePrefix .. "0"
     end
     local filename = imagePrefix .. tostring(index) .. ".png"
+---@diagnostic disable-next-line: missing-parameter
     self.image = love.graphics.newImage("image/diagonalStuff/" .. filename)
 
     self.scale = diagonalStuffScale

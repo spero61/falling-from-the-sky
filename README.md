@@ -1,16 +1,25 @@
-# falling-from-the-sky
+# Falling from the Sky
 
-Reimplementation of Scratch mini game with LÖVE
+Reimplementation of Scratch mini game using LÖVE
 
 ### Scratch version: [original version link](https://scratch.mit.edu/projects/554523909/)
 
-<details open>
-  <summary>Scratch version screenshot</summary>
+<details>
+  <summary>Scratch Version Screenshot</summary>
   <br>
   <image alt="scratch version play screenshot gif" src="./screenshot/scratch-version.gif">
 </details>
+  
+<br>
 
-# &nbsp;
+<details open>
+  <summary>Game Play Screenshot</summary>
+  <br>
+  <image alt="LÖVE version play screenshot gif" src="./screenshot/falling-from-the-sky.gif">
+</details>
+
+
+  
 
 ## LÖVE version credits
 

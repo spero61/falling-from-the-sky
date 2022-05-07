@@ -17,6 +17,7 @@ local titleTween = Tween.new(1.2, title, {x=90, y=90})
 
 local isPressed = false
 local startTimer = 1
+---@diagnostic disable-next-line: missing-parameter
 local background = love.graphics.newImage("image/background/main.jpg")
 
 function TitleScreenState:init()
