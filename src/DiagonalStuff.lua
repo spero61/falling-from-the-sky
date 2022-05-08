@@ -6,8 +6,8 @@
     Author: Yoru Sung
     https://github.com/spero61/falling-from-the-sky
 
-    DiagonalStuff makes a user to move player constantly,
-    as it target's current player's x coordinate.
+    DiagonalStuff makes a user move player constantly,
+    as it target's current player's x coordinate upon creation.
 ]]
 DiagonalStuff = Class{__includes = Stuff}
 

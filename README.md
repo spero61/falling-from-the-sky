@@ -2,15 +2,21 @@
 
 Reimplementation of Scratch mini game using LÖVE
 
-### Scratch version: [original version link](https://scratch.mit.edu/projects/554523909/)
-
+Scratch version: [original version link](https://scratch.mit.edu/projects/554523909/)
 <details>
   <summary>Scratch Version Screenshot</summary>
   <br>
   <image alt="scratch version play screenshot gif" src="./screenshot/scratch-version.gif">
 </details>
-  
-<br>
+<br> 
+
+## Description:
+This is a simple 2D game, a player has to try not to collide with any stuff
+that is falling from the sky. A user can move the player character by pressing
+the arrow key <-, -> alternatively 'a', 'd' key. You can toggle full-screen mode by pressing
+the 'f' key on the title screen. If the player successfully dodges the stuff, a player gets
+a corresponding score. As the player scores higher and higher, pieces of stuff are getting faster
+and they are going to more frequently be created.
 
 <details open>
   <summary>Game Play Screenshot</summary>

@@ -6,11 +6,11 @@
     Author: Yoru Sung
     https://github.com/spero61/falling-from-the-sky
 
-    Handles game play logic. A user can control player character.
+    Responsible for the game's main logic. A user can control player character.
     'a' or 'left' key to move left and 'd' or 'right' key to move right.
     when a 'stuff' falls beyond the bottom of the window, a user earns
     score with respect to its type of stuff.
-    When a 'stuff' collides with the player character, transition to GameOverState.
+    When a 'stuff' collides with the player character, it transits to GameOverState.
 ]]
 PlayState = Class{__includes = BaseState}
 

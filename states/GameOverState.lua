@@ -8,8 +8,8 @@
 
     Show highest score and player score.
     If the current player score breaks the new record,
-    display "New Record !!" message on the screen.
-    A user can restart the game by pressing 'enter' or 'return' key.
+    display the "New Record !!" message on the screen.
+    A user can restart the game by pressing the 'enter' or 'return' key.
 ]]
 GameOverState = Class{__includes = BaseState}
 
