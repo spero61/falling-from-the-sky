@@ -58,9 +58,9 @@ function love.load()
     love.graphics.setFont(mediumFont) -- default font
     
     -- soundtrack
-    soundtrackTitle = love.audio.newSource("sound/soundtrack/2019-10-24 Failing Forward.mp3", "stream")
-    soundtrackPlay = love.audio.newSource("sound/soundtrack/2022-02-02 Getting Through the Day.mp3", "stream")
-    soundtrackGameOver = love.audio.newSource("sound/soundtrack/2022-03-02 Can We Just Enjoy Stuff Again.mp3", "stream")
+    soundtrackTitle = love.audio.newSource("sound/soundtrack/2019-10-24-Failing-Forward.ogg", "stream")
+    soundtrackPlay = love.audio.newSource("sound/soundtrack/2022-02-02-Getting-Through-the-Day.ogg", "stream")
+    soundtrackGameOver = love.audio.newSource("sound/soundtrack/2022-03-02-Can-We-Just-Enjoy-Stuff-Again.ogg", "stream")
     soundtrackTitle:setLooping(true)
     soundtrackPlay:setLooping(true)
     soundtrackGameOver:setLooping(true)
